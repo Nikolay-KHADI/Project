@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "position": {
+      "lat": 49.80766267523214,
+      "lng": 36.053368415191585
+    },
+    "data": {
+      "address": "меморіал 'Батьківщина-мати', вулиця 5-го Вересня",
+      "openTime": "00:00",
+      "closeTime": "24:00",
+      "price": 20,
+      "totalPlaces": 30,
+      "freePlaces": 20
+    }
+  },
+  {
+    "id": 2,
+    "position": {
+      "lat": 49.80800540774195,
+      "lng": 36.05489459200528
+    },
+    "data": {
+      "address": "площа Перемоги",
+      "openTime": "08:00",
+      "closeTime": "22:00",
+      "price": 10,
+      "totalPlaces": 70,
+      "freePlaces": 45
+    }
+  },
+  {
+    "id": 3,
+    "position": {
+      "lat": 49.80907918971337,
+      "lng": 36.054863649219904
+    },
+    "data": {
+      "address": "Посад, вулиця Дніпропетровська, 218",
+      "openTime": "08:00",
+      "closeTime": "21:00",
+      "price": 15,
+      "totalPlaces": 16,
+      "freePlaces": 0
+    }
+  },
+  {
+    "id": 4,
+    "position": {
+      "lat": 49.80693175823799,
+      "lng": 36.0586500204771
+    },
+    "data": {
+      "address": "вулиця Ігоря Савченка, 22",
+      "openTime": "07:00",
+      "closeTime": "22:00",
+      "price": 18,
+      "totalPlaces": 50,
+      "freePlaces": 40
+    }
+  }
+]
