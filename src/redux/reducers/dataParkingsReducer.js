@@ -4,7 +4,7 @@ const initialState = {
   isParkingsLoading: false,
 }
 
-export const parkingsReducer = (state = initialState, action) => {
+export const dataParkingsReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case "GET_PARKINGS_REQUEST":

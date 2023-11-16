@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal } from '../components/Modal';
+import { TransitionsModal } from '../components/TransitionsModal';
 import { getParkingsThunk } from '../components/getParkingsThunk';
+import Link from '@mui/material/Link';
+
 
 
 
@@ -17,25 +19,32 @@ export function LayoutPage() {
   }, [dispatch])
 
   const closeModal = () => {
-    dispatch({type: 'PASS_FALSE_TO_IS_MODAL_OPEN'})
+    dispatch({ type: 'PASS_FALSE_TO_IS_MODAL_OPEN' })
   }
 
   // console.log("Render LayoutPage");
 
   return (
-    <div>
+    <div className='container'>
       <div className='navbar'>
-        <NavLink to="/" >Головна сторінка </NavLink>
+        {/* <NavLink to="/" >Головна сторінка </NavLink>
         <NavLink to="list">Адреса парковок </NavLink>
         <NavLink to="map">Парковки на карті </NavLink>
-        <NavLink to="fav">Обрані парковки </NavLink>
+        <NavLink to="fav">Обрані парковки </NavLink> */}
 
+        <Link href="/">Головна сторінка</Link>
+        <Link href="list">Адреси парковок</Link>
+        <Link href="map">Парковки на карті</Link>
+        <Link href="fav">Обрані парковки</Link>
       </div>
 
       <Outlet />
-      {console.log(1) || isModalOpen && <Modal
-        closeModal={() => closeModal()}
-      ></Modal>}
+
+      <TransitionsModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+      ></TransitionsModal>
+
     </div>
   )
 }
