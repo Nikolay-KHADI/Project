@@ -98,12 +98,12 @@ export function Map() {
       >
         {findPlace && <Marker
           position={findPlace}
-          icon="./src/img/2.png"
+          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
         ></Marker>}
 
         {startPointDirection && <Marker
           position={startPointDirection}
-          icon="./src/img/2.png"
+          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
         ></Marker>}
 
         {directions && <DirectionsRenderer
