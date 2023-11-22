@@ -1,10 +1,8 @@
 
-// import './MapPage.css'
 import { useLoadScript } from "@react-google-maps/api"
 import { Map } from '../components/Map';
 
 const libraries = ["places"]
-
 
 export function MapPage() {
 

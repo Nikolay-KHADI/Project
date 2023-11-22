@@ -32,8 +32,6 @@ export function ModalList() {
     return price * (timeDeparture)
   }
 
-  // console.log(cost());
-
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="secondary mailbox folders">

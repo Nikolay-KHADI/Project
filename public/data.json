@@ -6,7 +6,7 @@
       "lng": 36.053368415191585
     },
     "data": {
-      "address": "меморіал 'Батьківщина-мати', вулиця 5-го Вересня",
+      "address": " вулиця 5-го Вересня, меморіал 'Батьківщина-мати'",
       "openTime": "00:00",
       "closeTime": "24:00",
       "price": 20,
@@ -36,7 +36,7 @@
       "lng": 36.054863649219904
     },
     "data": {
-      "address": "Посад, вулиця Дніпропетровська, 218",
+      "address": "вулиця Дніпропетровська, 218, Посад",
       "openTime": "08:00",
       "closeTime": "21:00",
       "price": 15,
@@ -58,5 +58,186 @@
       "totalPlaces": 50,
       "freePlaces": 40
     }
+  } ,
+  {
+    "id": 5,
+    "position": {
+      "lat": 49.810836457165784,
+      "lng": 36.057670035210464
+    },
+    "data": {
+      "address": "вулиця Дніпропетровська, 201",
+      "openTime": "07:00",
+      "closeTime": "22:00",
+      "price": 20,
+      "totalPlaces": 20,
+      "freePlaces": 15
+    }
+  },
+  {
+    "id": 6,
+    "position": {
+      "lat": 49.8173399053441,
+      "lng": 36.06351565040308
+    },
+    "data": {
+      "address": "вулиця Дніпропетровська, 151",
+      "openTime": "07:00",
+      "closeTime": "22:00",
+      "price": 15,
+      "totalPlaces": 10,
+      "freePlaces": 8
+    }
+  },
+  {
+    "id": 7,
+    "position": {
+      "lat": 49.81851304092743,
+      "lng": 36.063473594738475
+    },
+    "data": {
+      "address": "вулиця Дніпропетровська, 133, Сервісний центр МВС",
+      "openTime": "07:00",
+      "closeTime": "22:00",
+      "price": 15,
+      "totalPlaces": 10,
+      "freePlaces": 8
+    }
+  },
+  {
+    "id": 8,
+    "position": {
+      "lat": 49.828680520191504,
+      "lng": 36.06191126439133
+    },
+    "data": {
+      "address": "вулиця Дніпропетровська, 42",
+      "openTime": "07:00",
+      "closeTime": "22:00",
+      "price": 15,
+      "totalPlaces": 20,
+      "freePlaces": 10
+    }
+  },
+  {
+    "id": 9,
+    "position": {
+      "lat": 49.8385413822292,
+      "lng": 36.07011443341237
+    },
+    "data": {
+      "address": "вулиця Луначарського, готель Гірка",
+      "openTime": "00:00",
+      "closeTime": "24:00",
+      "price": 30,
+      "totalPlaces": 25,
+      "freePlaces": 20
+    }
+  },
+  {
+    "id": 10,
+    "position": {
+      "lat": 49.801488756859285,
+      "lng": 36.04929007795865
+    },
+    "data": {
+      "address": "вулиця Дніпропетровська, 264",
+      "openTime": "07:00",
+      "closeTime": "23:00",
+      "price": 20,
+      "totalPlaces": 15,
+      "freePlaces": 12
+    }
+  },
+  {
+    "id": 11,
+    "position": {
+      "lat": 49.79220925226531,
+      "lng": 36.055311975675735
+    },
+    "data": {
+      "address": "вулиця Ліхачівська, база відпочинку Аіст",
+      "openTime": "00:00",
+      "closeTime": "24:00",
+      "price": 10,
+      "totalPlaces": 15,
+      "freePlaces": 10
+    }
+  },
+  {
+    "id": 12,
+    "position": {
+      "lat": 49.81718356382037,
+      "lng": 36.04940341209492
+    },
+    "data": {
+      "address": "вулиця Леонівська, 63",
+      "openTime": "00:00",
+      "closeTime": "24:00",
+      "price": 15,
+      "totalPlaces": 12,
+      "freePlaces": 10
+    }
+  },
+  {
+    "id": 13,
+    "position": {
+      "lat": 49.8216674665029,
+      "lng": 36.048352860964265
+    },
+    "data": {
+      "address": "вулиця Леонівська, вокзальна площа",
+      "openTime": "00:00",
+      "closeTime": "24:00",
+      "price": 20,
+      "totalPlaces": 20,
+      "freePlaces": 10
+    }
+  },
+  {
+    "id": 14,
+    "position": {
+      "lat": 49.84680479091605,
+      "lng": 36.05517197100645
+    },
+    "data": {
+      "address": "вулиця Мірошниченка, 63, ліцей ім. Мірошниченка",
+      "openTime": "08:00",
+      "closeTime": "20:00",
+      "price": 10,
+      "totalPlaces": 20,
+      "freePlaces": 16
+    }
+  },
+  {
+    "id": 15,
+    "position": {
+      "lat": 49.81424432972245,
+      "lng": 36.0665478913087
+    },
+    "data": {
+      "address": "1-й в'їзд Шевченка, Шевченківський цвинтар",
+      "openTime": "08:00",
+      "closeTime": "20:00",
+      "price": 15,
+      "totalPlaces": 20,
+      "freePlaces": 10
+    }
+  },
+  {
+    "id": 16,
+    "position": {
+      "lat": 49.79632695513084,
+      "lng": 36.069258578814264
+    },
+    "data": {
+      "address": "вулиця Лесі Українки, 70, школа №3",
+      "openTime": "08:00",
+      "closeTime": "17:00",
+      "price": 10,
+      "totalPlaces": 18,
+      "freePlaces": 16
+    }
   }
+
 ]

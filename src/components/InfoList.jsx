@@ -1,23 +1,27 @@
-// import React from 'react'
 
-import { GoogleMap, useLoadScript, Marker, DirectionsRenderer, MarkerClusterer, InfoWindow, DirectionsService } from "@react-google-maps/api"
-import { useCallback, useEffect, useState } from "react";
-import { useMemo, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux";
-import { getParkingsThunk } from "./getParkingsThunk";
-import { TooltipElement } from "../UI/TooltipElement";
 import { Box, Button, List, ListItem, Tooltip, Typography } from "@mui/material";
-import { Places } from "./Places";
-
+import { useDispatch } from "react-redux";
 
 export function InfoList(props) {
+  const dispatch = useDispatch();
+
+  const addToFavourite = (id) => {
+    dispatch({ type: "ADD_FAVOURITE_ID", payload: { id: id } })
+  }
+
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="secondary mailbox folders">
-        <List sx={{ mt: 2 }}>
+        <List
+        // sx={{ mt: 2 }}
+        >
           <ListItem disablePadding>
-            <Typography color="initial" sx={{ my: 1 }}>
-              {props.activeMarkerData.data.address}
+            <Typography
+              color="initial"
+              align= 'center'
+              sx={{ my: 1, fontSize: '18px', fontWeight: '700', align: 'center' }}
+            >
+              Парковка за адресою: {props.activeMarkerData.data.address}
             </Typography>
           </ListItem>
           <ListItem disablePadding>
@@ -45,7 +49,8 @@ export function InfoList(props) {
             <Button
               variant="outlined"
               sx={{ m: '0 auto' }}
-              onClick={() => console.log(1)}
+              onClick={() => addToFavourite(props.id)}
+              disabled={props.idFavourites.includes(props.id)}
             >Добавити парковку в обрані</Button>
           </ListItem>
           <ListItem disablePadding sx={{ mt: 2 }}>
@@ -70,11 +75,8 @@ export function InfoList(props) {
                 variant="outlined"
                 sx={{ m: '0 auto' }}
                 onClick={() => {
-                  // props.fetchDirections(props.markerInfoWindowPosition);
                   props.fetchDirections();
-
                   props.setIsMarkerInfoWindow(false);
-                  console.log(3)
                 }}
               >Проложити маршрут до цієї точки</Button>
             </ListItem>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TransitionsModal } from '../components/TransitionsModal';
 import { getParkingsThunk } from '../components/getParkingsThunk';
 import Link from '@mui/material/Link';
+import { getFavouriteThunk } from '../components/getFavouriteThunk';
 
 
 
@@ -12,11 +13,18 @@ import Link from '@mui/material/Link';
 export function LayoutPage() {
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const isModalOpen = useSelector(state => state.modal.isModalOpen);
+  const idFavourites = useSelector(state => state.favourite.idFavourites);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getParkingsThunk())
-  }, [dispatch])
+    dispatch(getParkingsThunk());
+    dispatch(getFavouriteThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // console.log(idFavourites);
+    localStorage.setItem('fav', JSON.stringify(idFavourites))
+  }, [idFavourites])
 
   const closeModal = () => {
     dispatch({ type: 'PASS_FALSE_TO_IS_MODAL_OPEN' })

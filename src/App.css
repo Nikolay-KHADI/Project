@@ -29,6 +29,11 @@
   position: relative;
 }
 
+.map h4 {
+  margin: 10px;
+  text-align: center;
+}
+
 .mapFind {
   position: absolute;
   z-index: 1;

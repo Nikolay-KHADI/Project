@@ -26,8 +26,6 @@ const style = {
 
 export function TransitionsModal(props) {
 
-  console.log("Render Modal");
-
   return (
 
     <div>
