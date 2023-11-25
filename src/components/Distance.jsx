@@ -3,7 +3,7 @@
 export function Distance() {
   return (
     <div>
-      123
+      {/* 123 */}
     </div>
   )
 }

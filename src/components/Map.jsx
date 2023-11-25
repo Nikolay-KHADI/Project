@@ -99,7 +99,7 @@ export function Map() {
           setDirections(null);
           // mapRef.current?.set
         }} />
-        {directions && <Distance />}
+        {/* {directions && <Distance />} */}
       </div>
       <GoogleMap
         zoom={findPlace ? 17 : 14}
