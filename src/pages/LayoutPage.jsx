@@ -121,12 +121,13 @@ export function LayoutPage() {
 }
 
 const BottomNavigationStyled = styled(BottomNavigation)(() => ({
-  // height: '500px',
-  // fontSize: '30px',
-  "& .Mui-selected": {
-    fontSize: '30px',
-  },
+  // "& .MuiBottomNavigationAction-root": {
   "& .MuiBottomNavigationAction-label": {
     fontSize: '24px',
   },
+  "& .MuiBottomNavigationAction-label.Mui-selected": {
+    fontSize: '26px',
+  },
+
+  // }
 }))
