@@ -9,7 +9,8 @@
   display: flex;
   /* justify-content: space-between; */
   justify-content: center;
-
+  margin-bottom: 15px;
+  padding: 10px 10px;
 }
 
 .btn {
@@ -24,6 +25,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0px 20px;
 }
 
 .map {
@@ -103,4 +105,8 @@
   background-color: #fff;
   border: 2px solid #000;
   border-radius: 20px;
+}
+
+.test {
+  background-color: #dcecf5
 }
