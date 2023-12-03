@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { TransitionsModal } from '../components/TransitionsModal';
 import { getParkingsThunk } from '../components/getParkingsThunk';
 import { getFavouriteThunk } from '../components/getFavouriteThunk';
-import { BottomNavigation, BottomNavigationAction, Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Box, Drawer, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
@@ -22,11 +24,17 @@ export function LayoutPage() {
   const idFavourites = useSelector(state => state.favourite.idFavourites);
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const [navigationValue, setNavigationValue] = useState(0);
+  const location = useLocation();
+  console.log(location);
+  // const [isFindInPageIcon, setIsFindInPageIcon] = useState(false);
+
   const dispatch = useDispatch();
 
+
+
   const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
-  // console.log(isMatch);
+  const isSmallViewport = useMediaQuery(theme.breakpoints.down("sm"));
+  // console.log(isSmallViewport);
 
   useEffect(() => {
     dispatch(getParkingsThunk());
@@ -37,6 +45,9 @@ export function LayoutPage() {
     // console.log(idFavourites);
     localStorage.setItem('fav', JSON.stringify(idFavourites))
   }, [idFavourites])
+
+
+
 
   const closeModal = () => {
     dispatch({ type: 'PASS_FALSE_TO_IS_MODAL_OPEN' })
@@ -49,7 +60,7 @@ export function LayoutPage() {
       <div className='navbar'
         style={{
           backgroundColor: '#dcecf5',
-          borderRadius: '50px'
+          borderRadius: '5px'
         }}>
 
         {/* <NavLink to="/" >Головна сторінка </NavLink>
@@ -57,42 +68,59 @@ export function LayoutPage() {
         <NavLink to="map">Парковки на карті </NavLink>
         <NavLink to="fav">Обрані парковки </NavLink> */}
 
-        {isMatch ? (
-          <div>
+        {isSmallViewport ? (
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
             <IconButton
               size="large"
-              // edge="start"
+              edge="start"
               color="inherit"
               // aria-label="menu"
               sx={{ mr: 2 }}
               onClick={() => setIsOpenDrawer(true)}
             >
-              <MenuIcon />
+              <MenuIcon fontSize='large' />
             </IconButton>
+
+            {/* {location.pathname === '/list' && <IconButton > */}
+            {location.pathname === '/map' && <IconButton
+              onClick={() => { dispatch({ type: "TOGGLE_WINDOW_FIND" }) }}
+            >
+              <SearchIcon fontSize='large' />
+            </IconButton>}
+
             <Drawer
-              anchor={'right'}
+              anchor={'left'}
               open={isOpenDrawer}
               onClose={() => setIsOpenDrawer(false)}
             >
-              {/* <Box 
-              // sx={{ width: 800 }}
+              {/* <Box sx={{width: 800 }}> */}
+              <BottomNavigationStyled
+                showLabels
+                value={navigationValue}
+                onChange={(event, newValue) => {
+                  setNavigationValue(newValue);
+                }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 10,
+                  marginTop: '70px'
+                }}
               >
-                <BottomNavigationStyled
-                  showLabels
-                  value={navigationValue}
-                  onChange={(newValue) => {
-                    setNavigationValue(newValue);
-                  }}
-                  sx={{ backgroundColor: 'inherit' }}
-                >
-                  <BottomNavigationAction label="Головна" component={RouterLink} to='/' />
-                  <BottomNavigationAction label="Парковки" component={RouterLink} to='list' />
-                  <BottomNavigationAction label="Карта" component={RouterLink} to='/map' />
-                  <BottomNavigationAction label="Обрані" component={RouterLink} to='/fav' />
-                </BottomNavigationStyled>
-              </Box> */}
+                <BottomNavigationAction label="Головна" component={RouterLink} to='/' onClick={() => setIsOpenDrawer(false)} />
+                <BottomNavigationAction label="Парковки" component={RouterLink} to='list' onClick={() => setIsOpenDrawer(false)} />
+                <BottomNavigationAction label="Карта" component={RouterLink} to='/map' onClick={() => setIsOpenDrawer(false)} />
+                <BottomNavigationAction label="Обрані" component={RouterLink} to='/fav' onClick={() => setIsOpenDrawer(false)} />
+              </BottomNavigationStyled>
+              {/* </Box> */}
 
-              <List sx={{fontSize: 24}}>
+              {/* <List sx={{fontSize: 24}}>
 
                 <ListItem disablePadding >
                   <ListItemButton component={RouterLink} to='/' onClick={() => setIsOpenDrawer(false)}>
@@ -114,11 +142,11 @@ export function LayoutPage() {
 
                 <ListItem disablePadding>
                   <ListItemButton component={RouterLink} to='fav' onClick={() => setIsOpenDrawer(false)}>                    
-                    <ListItemText primary={'Обрані'} />
+                    Обрані
                   </ListItemButton>
                 </ListItem>
 
-              </List>
+              </List> */}
 
             </Drawer>
           </div>
@@ -129,7 +157,7 @@ export function LayoutPage() {
             <BottomNavigationStyled
               showLabels
               value={navigationValue}
-              onChange={(newValue) => {
+              onChange={(event, newValue) => {
                 setNavigationValue(newValue);
               }}
               sx={{ backgroundColor: 'inherit' }}

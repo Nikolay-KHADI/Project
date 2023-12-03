@@ -29,33 +29,27 @@ export function Places({ setFindPlace }) {
   }
 
   return (
-    <div>
-      <Combobox onSelect={handleSelect} 
-      // style={{ backgroundColor: '#fff' }}
+
+    <Combobox onSelect={handleSelect}
+    >
+
+      <ComboboxInput
+        // style={{ width: "15vw" }}
+        value={value}
+        onChange={event => setValue(event.target.value)}
+        className="mapFindInput"
+        placeholder="Пошук"
+      // width={'410px'}
       >
+      </ComboboxInput>
 
-        <ComboboxInput
-          style={{ width: "15vw" }}
-          value={value}
-          onChange={event => setValue(event.target.value)}
-          className="mapFindInput"
-          placeholder="Пошук"
-          // width={'410px'}
-        >
-        </ComboboxInput>
-
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" && data.map(({ place_id, description }) => (
-              <ComboboxOption key={place_id} value={description} />
-            ))}
-          </ComboboxList>
-          {/* <div>1</div> */}
-        </ComboboxPopover>
-        {/* <div>2</div> */}
-      </Combobox>
-      {/* <div>3</div> */}
-
-    </div>
+      <ComboboxPopover >
+        <ComboboxList >
+          {status === "OK" && data.map(({ place_id, description }) => (
+            <ComboboxOption key={place_id} value={description} />
+          ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
   )
 }

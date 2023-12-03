@@ -4,14 +4,17 @@ import { useCallback, useEffect, useState } from "react";
 import { useMemo, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Places } from "./Places";
-import { InfoList } from "./InfoList";
+import { InfoList } from "./InfoListMaps";
 import { Distance } from "./Distance";
+import { Box, Drawer, IconButton, useMediaQuery, useTheme } from '@mui/material';
 
 
 export function Map() {
   const mapRef = useRef();
   const parkings = useSelector(state => state.parkings.parkings);
   const idFavourites = useSelector(state => state.favourite.idFavourites);
+  const isWindowFindOpen = useSelector(state => state.windowFindOpen.isWindowFindOpen);
+
   const [isMarkerInfoWindow, setIsMarkerInfoWindow] = useState(false);
   const [markerInfoWindowPosition, setMarkerInfoWindowPosition] = useState({});
   const [activeMarkerId, setActiveMarkerId] = useState(null);
@@ -20,10 +23,15 @@ export function Map() {
   const [startPointDirection, setStartPointDirection] = useState(null);
   const [directions, setDirections] = useState(null);
   const [findPlace, setFindPlace] = useState(null);
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+
 
   const dispatch = useDispatch();
 
   const activeMarkerData = useMemo(() => parkings.find(marker => marker.id === activeMarkerId), [activeMarkerId]);
+
+  const theme = useTheme();
+  const isSmallViewport = useMediaQuery(theme.breakpoints.down("sm"));
 
   const openModal = () => {
     dispatch({ type: 'PASS_TRUE_TO_IS_MODAL_OPEN' });
@@ -91,16 +99,56 @@ export function Map() {
   return (
 
     <div className="map">
-      <div className="mapFind">
-        <h4>Пошук на карті</h4>
-        <Places setFindPlace={(coord) => {
+
+      {isSmallViewport ? (
+
+        <Drawer
+          anchor={'right'}
+          open={isWindowFindOpen}
+          onClose={() => { dispatch({ type: "TOGGLE_WINDOW_FIND" }) }}
+          style={{
+            margin: '10px',
+            zIndex:0,
+          }}
+        >
+          <h4 style={{ textAlign: "center" }}>Пошук на карті</h4>
+          <div
+            style={{
+              margin: '10px',
+              zIndex:'30',
+            }}
+          >
+            <Places
+              setFindPlace={(coord) => {
+                setFindPlace(coord);
+                mapRef.current?.panTo(coord);
+                setDirections(null);
+                // mapRef.current?.set
+              }} />
+          </div>
+
+        </Drawer>
+      ) : (
+        <div className="mapFind">
+          <h4>Пошук на карті</h4>
+
+          <Places setFindPlace={(coord) => {
+            setFindPlace(coord);
+            mapRef.current?.panTo(coord);
+            setDirections(null);
+            // mapRef.current?.set
+          }} />
+        </div>
+      )}
+
+      {/* <Places setFindPlace={(coord) => {
           setFindPlace(coord);
           mapRef.current?.panTo(coord);
           setDirections(null);
           // mapRef.current?.set
-        }} />
-        {/* {directions && <Distance />} */}
-      </div>
+        }} /> */}
+
+      {/* {directions && <Distance />} */}
       <GoogleMap
         zoom={findPlace ? 17 : 14}
         center={center}
@@ -177,9 +225,9 @@ export function Map() {
               openModal={openModal}
               setIsMarkerInfoWindow={setIsMarkerInfoWindow}
               startPointDirection={startPointDirection}
-              fetchDirections={fetchDirections}    
-              id= {activeMarkerId}     
-              idFavourites={idFavourites}    
+              fetchDirections={fetchDirections}
+              id={activeMarkerId}
+              idFavourites={idFavourites}
             ></InfoList>
           </div>
 

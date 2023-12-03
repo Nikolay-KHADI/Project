@@ -68,7 +68,10 @@ button:focus-visible {
   }
 }
 
-
+*/
 .test {
   color: #a50000;
-} */
+  background-size: contain;
+  /* min-height: fi; */
+  justify-content:flex-end
+} 

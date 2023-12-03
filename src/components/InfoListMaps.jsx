@@ -51,7 +51,7 @@ export function InfoList(props) {
               sx={{ m: '0 auto' }}
               onClick={() => addToFavourite(props.id)}
               disabled={props.idFavourites.includes(props.id)}
-            >Добавити парковку в обрані</Button>
+            >Добавити парковку в обрані </Button>
           </ListItem>
           <ListItem disablePadding sx={{ mt: 2 }}>
             <Button
@@ -61,7 +61,7 @@ export function InfoList(props) {
                 props.openModal();
                 props.setIsMarkerInfoWindow(false);
               }}
-            >Забронювати місце</Button>
+            >Забронювати місце </Button>
           </ListItem>
           <Tooltip
             disableHoverListener={!!props.startPointDirection}

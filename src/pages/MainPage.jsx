@@ -7,7 +7,15 @@ export function MainPage() {
   // const dispatch = useDispatch();
 
   return (
-    <div>
+    <div
+      style={{ 
+        backgroundImage: 'url("/img/img_1.png")', 
+        backgroundSize: 'cover',
+        minHeight: '80%'
+      }}
+      // style={{ backgroundImage: 'url("../../")' }}
+
+    >
       {/* <h2>MainPage</h2> */}
       <p>В цьому додатку на даний момент доступні наступні функції:</p>
       <p>Переглянути адреси всіх парковок в нашому місті</p>

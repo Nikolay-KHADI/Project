@@ -4,6 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Box, Button, List, ListItem } from '@mui/material';
 
 export function ListPage() {
   const parkings = useSelector(state => state.parkings.parkings);
@@ -32,27 +33,55 @@ export function ListPage() {
             <Typography >{parking.data.address}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <h4>Режим роботи: з {parking.data.openTime} до {parking.data.closeTime} </h4>
-            <h4>Вартість: {parking.data.price} грн/год </h4>
-            <h4>Всього місць: {parking.data.totalPlaces}</h4>
-            <h4>Вільних місць: {parking.data.freePlaces}</h4>
-            <button
-              className="btn"
-              onClick={() => {
-                openModal(parking.id);
-              }}
-            >
-              Забронювати стояночне місце
-            </button>
-            <button
-              className="btn"
-              onClick={() => {
-                addToFavourite(parking.id)
-              }}
-              disabled={idFavourites.includes(parking.id)}
-            >
-              Добавити парковку в обрані
-            </button>
+
+            <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+              <nav aria-label="secondary mailbox folders">
+                <List>
+
+                  <ListItem disablePadding>
+                    <Typography color="initial" sx={{ my: 1 }}>
+                      Режим роботи: з {parking.data.openTime} до {parking.data.closeTime}
+                    </Typography>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <Typography color="initial" sx={{ my: 1 }}>
+                      Вартість: {parking.data.price} грн/год
+                    </Typography>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <Typography color="initial" sx={{ my: 1 }}>
+                      Всього місць: {parking.data.totalPlaces}
+                    </Typography>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <Typography color="initial" sx={{ my: 1 }}>
+                      Вільних місць: {parking.data.freePlaces}
+                    </Typography>
+                  </ListItem>
+
+                  <ListItem disablePadding sx={{ mt: 2 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{ m: '0 auto' }}
+                      onClick={() => {
+                        openModal(parking.id);
+                      }}
+                    >Забронювати місце </Button>
+                  </ListItem>
+
+                  <ListItem disablePadding sx={{ mt: 2 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{ m: '0 auto' }}
+                      onClick={() => addToFavourite(parking.id)}
+                      disabled={idFavourites.includes(parking.id)}
+                    >Добавити парковку в обрані </Button>
+                  </ListItem>
+
+
+                </List>
+              </nav>
+            </Box>
 
           </AccordionDetails>
         </Accordion>
