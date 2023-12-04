@@ -5,7 +5,6 @@ import { useMemo, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Places } from "./Places";
 import { InfoList } from "./InfoListMaps";
-import { Distance } from "./Distance";
 import { Box, Drawer, IconButton, useMediaQuery, useTheme } from '@mui/material';
 
 
@@ -148,7 +147,6 @@ export function Map() {
           // mapRef.current?.set
         }} /> */}
 
-      {/* {directions && <Distance />} */}
       <GoogleMap
         zoom={findPlace ? 17 : 14}
         center={center}
