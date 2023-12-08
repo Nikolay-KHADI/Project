@@ -2,11 +2,12 @@
 export const getParkingsThunk = () => {
   return (dispatch) => {
     dispatch({ type: "GET_PARKINGS_REQUEST" });
-    fetch("./data.json")
+    fetch("https://eoqaqjjqqt9v9h.m.pipedream.net")
+
     .then(res => res.json())
-    // Promise.reject(new Error('Fetch parkings went with error'))
     .then(res => {
-      dispatch({type: "GET_PARKINGS_SUCCESSFULLY", payload: {parkings: res}})
+      const parkings = Object.values(res)
+      dispatch({type: "GET_PARKINGS_SUCCESSFULLY", payload: {parkings: parkings}})
     })
     .catch(err => {
       dispatch({type: "GET_PARKINGS_ERROR"});
@@ -14,3 +15,4 @@ export const getParkingsThunk = () => {
       })
   }
 }
+

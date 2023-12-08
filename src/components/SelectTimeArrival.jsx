@@ -7,22 +7,16 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
 
-export function SelectTimeArrival() {
-  // const [timeArrival, settimeArrival] = React.useState('');
-  
+export function SelectTimeArrival() {  
   const dispatch = useDispatch();
 
   const handleChangeTimeArrival = (event) => {
-    // setAge(event.target.value);
     dispatch({type: "SET_TIME_ARRIVAL", payload: {timeArrival: event.target.value}})
   };
 
   return (
     <Box sx={{ minWidth: 120, pl: 2 }}>
-      <FormControl
-        fullWidth
-      // sx={{ m: 1, minWidth: 220 }}
-      >
+      <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label"></InputLabel>
         <Select
           defaultValue={0}

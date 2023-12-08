@@ -1,26 +1,16 @@
 
-
-// import * as React from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography'
 import { SelectTimeArrival } from './SelectTimeArrival.jsx';
 import { SelectTimeDeparture } from './SelectTimeDeparture.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 
-
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-
 export function ModalList() {
-
-  // const timeArrival = useSelector(state => state.booked.timeArrival);
   const timeDeparture = useSelector(state => state.booked.timeDeparture);
+  const dispatch = useDispatch();
   const price = useSelector(state => {
     const id = state.booked.idParking;
     const parkings = state.parkings.parkings;
@@ -57,14 +47,13 @@ export function ModalList() {
           </ListItem>
 
           <ListItem disablePadding sx={{ mt: 2 }}>
-          <Button variant="outlined" sx={{ m: '0 auto' }}>Забронювати місце</Button>
-            {/* <ListItemButton variant="contained" component="a" href="#simple-list" sx={{ backgroundColor: '#f1f1f1' }}>
-            <Typography color="initial" sx={{ my: 1 }}>
-              До сплати грн
-            </Typography>
-            </ListItemButton> */}
+            <Button
+              variant="outlined"
+              sx={{ m: '0 auto' }}
+              onClick={() => dispatch({ type: 'PASS_FALSE_TO_IS_MODAL_OPEN' })
+              }
+            >Забронювати місце</Button>
           </ListItem>
-
 
         </List>
       </nav>

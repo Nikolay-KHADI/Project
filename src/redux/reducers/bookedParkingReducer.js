@@ -1,5 +1,3 @@
-
-
 const initialState = {
   idParking: null,
   timeArrival: 0,

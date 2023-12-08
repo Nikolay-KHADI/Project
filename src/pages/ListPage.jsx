@@ -8,8 +8,8 @@ import { Box, Button, List, ListItem } from '@mui/material';
 
 export function ListPage() {
   const parkings = useSelector(state => state.parkings.parkings);
-  const dispatch = useDispatch();
   const idFavourites = useSelector(state => state.favourite.idFavourites);
+  const dispatch = useDispatch();
 
   const openModal = (id) => {
     dispatch({ type: 'PASS_TRUE_TO_IS_MODAL_OPEN' });
@@ -66,7 +66,7 @@ export function ListPage() {
                       onClick={() => {
                         openModal(parking.id);
                       }}
-                    >Забронювати місце </Button>
+                    >Забронювати стояночне місце </Button>
                   </ListItem>
 
                   <ListItem disablePadding sx={{ mt: 2 }}>
@@ -77,7 +77,6 @@ export function ListPage() {
                       disabled={idFavourites.includes(parking.id)}
                     >Добавити парковку в обрані </Button>
                   </ListItem>
-
 
                 </List>
               </nav>

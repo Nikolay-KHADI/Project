@@ -13,8 +13,6 @@ export function SelectTimeDeparture() {
 
   const handleChangeTimeDeparture = (event) => {
     dispatch({type: "SET_TIME_DEPARTURE", payload: {timeDeparture: event.target.value}})
-
-    // console.log();
   };
 
   return (

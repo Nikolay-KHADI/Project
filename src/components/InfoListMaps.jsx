@@ -12,9 +12,7 @@ export function InfoList(props) {
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="secondary mailbox folders">
-        <List
-        // sx={{ mt: 2 }}
-        >
+        <List >
           <ListItem disablePadding>
             <Typography
               color="initial"

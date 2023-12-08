@@ -1,5 +1,3 @@
-
-
 const initialState = {
   idFavourites: [],
 }
@@ -23,27 +21,3 @@ export const favouriteReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-
-
-// const initialState = [];
-
-// export const favouriteReducer = (state = [], action) => {
-//   switch (action.type) {
-
-//     case "SET_FAVOURITE_ID":
-//       const id = action.payload.idFavourites;
-//       return [ ...state, id] ;
-
-//     case "ADD_FAVOURITE_ID":
-//       // const id = action.payload.idFavourites;
-
-//       return  [...state, action.payload.idFavourites ];
-
-//     case "DELETE_FAVOURITE_ID":
-//       return  [state.filter(idFav => id !== idFav)];
-
-//     default:
-//       return state;
-//   }
-// }

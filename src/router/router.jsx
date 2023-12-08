@@ -6,7 +6,6 @@ import { ListPage } from '../pages/ListPage'
 import { MapPage } from '../pages/MapPage'
 import { FavouritePage } from '../pages/FavouritePage';
 
-
 export const router = createBrowserRouter([
   {
     path: "/",

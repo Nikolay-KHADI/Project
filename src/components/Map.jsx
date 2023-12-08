@@ -13,7 +13,6 @@ export function Map() {
   const parkings = useSelector(state => state.parkings.parkings);
   const idFavourites = useSelector(state => state.favourite.idFavourites);
   const isWindowFindOpen = useSelector(state => state.windowFindOpen.isWindowFindOpen);
-
   const [isMarkerInfoWindow, setIsMarkerInfoWindow] = useState(false);
   const [markerInfoWindowPosition, setMarkerInfoWindowPosition] = useState({});
   const [activeMarkerId, setActiveMarkerId] = useState(null);
@@ -22,8 +21,7 @@ export function Map() {
   const [startPointDirection, setStartPointDirection] = useState(null);
   const [directions, setDirections] = useState(null);
   const [findPlace, setFindPlace] = useState(null);
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
-
+  const [isOpenDrawer] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -48,7 +46,6 @@ export function Map() {
     suppressMarkers: true
   }
 
-  // const onLoad = useCallback(map => (mapRef.current = map), [])
   const onLoad = useCallback(map => {
     if (map?.data) {
       mapRef.current = map
@@ -92,11 +89,7 @@ export function Map() {
     })
   }
 
-
-  console.log("Render Map");
-
   return (
-
     <div className="map">
 
       {isSmallViewport ? (
@@ -122,7 +115,6 @@ export function Map() {
                 setFindPlace(coord);
                 mapRef.current?.panTo(coord);
                 setDirections(null);
-                // mapRef.current?.set
               }} />
           </div>
 
@@ -135,17 +127,9 @@ export function Map() {
             setFindPlace(coord);
             mapRef.current?.panTo(coord);
             setDirections(null);
-            // mapRef.current?.set
           }} />
         </div>
       )}
-
-      {/* <Places setFindPlace={(coord) => {
-          setFindPlace(coord);
-          mapRef.current?.panTo(coord);
-          setDirections(null);
-          // mapRef.current?.set
-        }} /> */}
 
       <GoogleMap
         zoom={findPlace ? 17 : 14}
@@ -234,14 +218,12 @@ export function Map() {
         {isInfoWindowMapClick && infoWindowRightClickPosition && <InfoWindow
           onLoad={onLoad}
           position={infoWindowRightClickPosition}
-          // position={{ lat: 49.81161570856876, lng: 36.10123643951418 }}
           onCloseClick={() => setIsInfoWindowMapClick(false)}
         >
           <div
             className="btn"
             onClick={() => {
               setStartPointDirection(infoWindowRightClickPosition);
-              // setStartPointDirection({ lat: 49.81161570856876, lng: 36.10123643951418 });
               setIsInfoWindowMapClick(false)
             }}
           >Проложити маршрут з цієї точки</div>
