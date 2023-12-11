@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store.js'
 import CssBaseline from '@mui/material/CssBaseline';
 import './index.css'
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
       <CssBaseline />

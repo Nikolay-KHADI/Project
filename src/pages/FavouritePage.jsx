@@ -3,26 +3,20 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Box, Button, List, ListItem } from '@mui/material';
-
-
 export function FavouritePage() {
   const parkings = useSelector(state => state.parkings.parkings);
   const idFavourites = useSelector(state => state.favourite.idFavourites);
   const favouriteParking = parkings.filter(parking => idFavourites.includes(parking.id));
   const dispatch = useDispatch();
-
   const openModal = (id) => {
     dispatch({ type: 'PASS_TRUE_TO_IS_MODAL_OPEN' });
     dispatch({ type: 'SET_PARKING_ID', payload: { idParking: id } });
   }
-
   const removeFromFavourite = (id) => {
     dispatch({ type: "DELETE_FAVOURITE_ID", payload: { id: id } });
   };
-
   return (
     <div>
-
       {favouriteParking.map(parking => (
         <Accordion key={parking.id}>
           <AccordionSummary
@@ -34,11 +28,9 @@ export function FavouritePage() {
             <Typography >{parking.data.address}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
               <nav aria-label="secondary mailbox folders">
                 <List>
-
                   <ListItem disablePadding>
                     <Typography color="initial" sx={{ my: 1 }}>
                       Режим роботи: з {parking.data.openTime} до {parking.data.closeTime}
@@ -59,7 +51,6 @@ export function FavouritePage() {
                       Вільних місць: {parking.data.freePlaces}
                     </Typography>
                   </ListItem>
-
                   <ListItem disablePadding sx={{ mt: 2 }}>
                     <Button
                       variant="outlined"
@@ -69,7 +60,6 @@ export function FavouritePage() {
                       }}
                     >Забронювати стояночне місце </Button>
                   </ListItem>
-
                   <ListItem disablePadding sx={{ mt: 2 }}>
                     <Button
                       variant="outlined"
@@ -78,11 +68,9 @@ export function FavouritePage() {
                     >Видалити парковку з обраних
                     </Button>
                   </ListItem>
-
                 </List>
               </nav>
             </Box>
-
           </AccordionDetails>
         </Accordion>
       ))}

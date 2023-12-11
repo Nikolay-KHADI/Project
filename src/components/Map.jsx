@@ -1,4 +1,3 @@
-
 import { GoogleMap, Marker, DirectionsRenderer, MarkerClusterer, InfoWindow, DirectionsService } from "@react-google-maps/api"
 import { useCallback, useEffect, useState } from "react";
 import { useMemo, useRef } from "react"
@@ -6,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Places } from "./Places";
 import { InfoList } from "./InfoListMaps";
 import { Box, Drawer, IconButton, useMediaQuery, useTheme } from '@mui/material';
-
-
 export function Map() {
   const mapRef = useRef();
   const parkings = useSelector(state => state.parkings.parkings);
@@ -22,47 +19,36 @@ export function Map() {
   const [directions, setDirections] = useState(null);
   const [findPlace, setFindPlace] = useState(null);
   const [isOpenDrawer] = useState(false);
-
   const dispatch = useDispatch();
-
   const activeMarkerData = useMemo(() => parkings.find(marker => marker.id === activeMarkerId), [activeMarkerId]);
-
   const theme = useTheme();
   const isSmallViewport = useMediaQuery(theme.breakpoints.down("sm"));
-
   const openModal = () => {
     dispatch({ type: 'PASS_TRUE_TO_IS_MODAL_OPEN' });
     dispatch({ type: 'SET_PARKING_ID', payload: { idParking: activeMarkerId } })
   }
-
   const center = useMemo(() => ({ lat: 49.8076, lng: 36.0533 }), []);
   const options = {
     disableDefaultUI: true,
     clickableIcons: false,
     disableDoubleClickZoom: true,
   }
-
   const directionsRendererOptions = {
     suppressMarkers: true
   }
-
   const onLoad = useCallback(map => {
     if (map?.data) {
       mapRef.current = map
     }
   }, [])
-
-
   const handleClickMarker = (event, id) => {
     setIsMarkerInfoWindow(true);
     setActiveMarkerId(id);
     setMarkerInfoWindowPosition({ lat: event.latLng?.lat(), lng: event.latLng?.lng() });
     setIsInfoWindowMapClick(false);
   }
-
   const fetchDirections = () => {
     if (!startPointDirection || !markerInfoWindowPosition) return;
-
     const service = new google.maps.DirectionsService();
     service.route(
       {
@@ -88,12 +74,9 @@ export function Map() {
       return z < radius;
     })
   }
-
   return (
     <div className="map">
-
       {isSmallViewport ? (
-
         <Drawer
           anchor={'right'}
           open={isWindowFindOpen}
@@ -117,12 +100,10 @@ export function Map() {
                 setDirections(null);
               }} />
           </div>
-
         </Drawer>
       ) : (
         <div className="mapFind">
           <h4>Пошук на карті</h4>
-
           <Places setFindPlace={(coord) => {
             setFindPlace(coord);
             mapRef.current?.panTo(coord);
@@ -130,7 +111,6 @@ export function Map() {
           }} />
         </div>
       )}
-
       <GoogleMap
         zoom={findPlace ? 17 : 14}
         center={center}
@@ -143,7 +123,6 @@ export function Map() {
           setIsMarkerInfoWindow(false);
         }}
       >
-
         {findPlace && <Marker
           position={findPlace}
           icon={{
@@ -168,12 +147,10 @@ export function Map() {
           }}
           position={startPointDirection}
         ></Marker>}
-
         {directions && <DirectionsRenderer
           directions={directions}
           options={{ suppressMarkers: true }}
         />}
-
         {!findPlace && <MarkerClusterer>
           {(clusterer) => parkings.map(marker => (
             <Marker
@@ -184,7 +161,6 @@ export function Map() {
             />
           ))}
         </MarkerClusterer>}
-
         {findPlace && <MarkerClusterer>
           {(clusterer) => filterOnDistance().map(marker => (
             <Marker
@@ -212,9 +188,7 @@ export function Map() {
               idFavourites={idFavourites}
             ></InfoList>
           </div>
-
         </InfoWindow>}
-
         {isInfoWindowMapClick && infoWindowRightClickPosition && <InfoWindow
           onLoad={onLoad}
           position={infoWindowRightClickPosition}
@@ -228,7 +202,6 @@ export function Map() {
             }}
           >Проложити маршрут з цієї точки</div>
         </InfoWindow>}
-
       </GoogleMap>
     </div>
   )

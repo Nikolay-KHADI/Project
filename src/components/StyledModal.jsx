@@ -4,7 +4,6 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import { ModalList } from './ModalList';
-
 const style = {
   position: 'absolute',
   top: '50%',
@@ -16,11 +15,8 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
 export function StyledModal(props) {
-
   return (
-
     <div>
     <Modal
       aria-labelledby="transition-modal-title"
@@ -45,6 +41,5 @@ export function StyledModal(props) {
       </Fade>
     </Modal>
   </div>
-
   )
 }

@@ -1,9 +1,7 @@
-
 export const getParkingsThunk = () => {
   return (dispatch) => {
     dispatch({ type: "GET_PARKINGS_REQUEST" });
     fetch("https://eoqaqjjqqt9v9h.m.pipedream.net")
-
     .then(res => res.json())
     .then(res => {
       const parkings = Object.values(res)

@@ -6,14 +6,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
-
 export function SelectTimeArrival() {  
   const dispatch = useDispatch();
-
   const handleChangeTimeArrival = (event) => {
     dispatch({type: "SET_TIME_ARRIVAL", payload: {timeArrival: event.target.value}})
   };
-
   return (
     <Box sx={{ minWidth: 120, pl: 2 }}>
       <FormControl fullWidth>

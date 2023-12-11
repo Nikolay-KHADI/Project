@@ -1,14 +1,11 @@
 
 import { Box, Button, List, ListItem, Tooltip, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-
 export function InfoList(props) {
   const dispatch = useDispatch();
-
   const addToFavourite = (id) => {
     dispatch({ type: "ADD_FAVOURITE_ID", payload: { id: id } })
   }
-
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="secondary mailbox folders">
@@ -18,8 +15,7 @@ export function InfoList(props) {
               color="initial"
               align= 'center'
               sx={{ my: 1, fontSize: '18px', fontWeight: '700', align: 'center' }}
-            >
-              Парковка за адресою: {props.activeMarkerData.data.address}
+            >Парковка за адресою: {props.activeMarkerData.data.address}
             </Typography>
           </ListItem>
           <ListItem disablePadding>
@@ -42,7 +38,6 @@ export function InfoList(props) {
               Вільних місць: {props.activeMarkerData.data.freePlaces}
             </Typography>
           </ListItem>
-
           <ListItem disablePadding sx={{ mt: 2 }}>
             <Button
               variant="outlined"

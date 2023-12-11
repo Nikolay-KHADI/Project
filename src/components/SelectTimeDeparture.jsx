@@ -6,15 +6,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch } from 'react-redux';
-
 export function SelectTimeDeparture() {
-
   const dispatch = useDispatch();
-
   const handleChangeTimeDeparture = (event) => {
     dispatch({type: "SET_TIME_DEPARTURE", payload: {timeDeparture: event.target.value}})
   };
-
   return (
     <Box sx={{ minWidth: 120, pl: 10.7  }}>
       <FormControl

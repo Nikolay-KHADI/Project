@@ -10,7 +10,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from '@emotion/styled';
-
 export function LayoutPage() {
   const isModalOpen = useSelector(state => state.modal.isModalOpen);
   const idFavourites = useSelector(state => state.favourite.idFavourites);
@@ -20,24 +19,19 @@ export function LayoutPage() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isSmallViewport = useMediaQuery(theme.breakpoints.down("sm"));
-
   useEffect(() => {
     dispatch(getParkingsThunk());
     dispatch(getFavouriteThunk());
   }, [dispatch]);
-
   useEffect(() => {
     localStorage.setItem('fav', JSON.stringify(idFavourites))
   }, [idFavourites])
-
   const closeModal = () => {
     dispatch({ type: 'PASS_FALSE_TO_IS_MODAL_OPEN' })
   }
-
   return (
     <div className='container'>
       <div className='navbar'>
-
         {isSmallViewport ? (
           <div
             style={{
@@ -55,13 +49,11 @@ export function LayoutPage() {
             >
               <MenuIcon fontSize='large' />
             </Button>
-
             {location.pathname === '/map' && <Button
               onClick={() => { dispatch({ type: "TOGGLE_WINDOW_FIND" }) }}
             >
               <SearchIcon fontSize='large' />
             </Button>}
-
             <Drawer
               anchor={'left'}
               open={isOpenDrawer}
@@ -107,18 +99,14 @@ export function LayoutPage() {
           </Box>
         )}  
       </div>
-
       <Outlet />
-
       <StyledModal
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       ></StyledModal>
-
     </div>
   )
 }
-
 const BottomNavigationStyled = styled(BottomNavigation)(() => ({
   "& .MuiBottomNavigationAction-label": {
     fontSize: '24px',

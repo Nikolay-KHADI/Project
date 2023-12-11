@@ -1,4 +1,3 @@
-
 export function getFavouriteThunk() {
   return (dispatch) => {
     let favouriteParking = JSON.parse(localStorage.getItem("fav"));
