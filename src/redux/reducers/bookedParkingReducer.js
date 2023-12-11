@@ -14,7 +14,7 @@ export const bookedParkingReducer = (state = initialState, action) => {
       return { ...state, timeArrival: action.payload.timeArrival };
 
     case "SET_TIME_DEPARTURE":
-      return { ...state, timeDeparture: action.payload.timeDeparture};
+      return { ...state, timeDeparture: action.payload.timeDeparture };
 
     default:
       return state;
