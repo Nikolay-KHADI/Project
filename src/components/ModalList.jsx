@@ -49,6 +49,7 @@ export function ModalList() {
             <MuiTelInput
               defaultCountry="UA"
               onlyCountries={['PL', 'UA']}
+              label="Номер телефону"
               value={phoneNumber}
               onChange={(newValue) => {
                 setPhoneNumber(newValue)
